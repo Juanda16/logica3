@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /*Examples:
 52x^2 + 25x^1 + 65  ok
 52x^2 + 25x^1 - 65  ok
@@ -15,6 +17,7 @@ public class StringToPolinomio {
 
         try {
             String parts[] = rawPolinomio.split("x\\^|\\+|\\ +|\\+ |x| ");
+                        
             int j = 0;
             polinomio = new int[parts.length];
             for (int i = 0; i < parts.length; i++) {
@@ -38,6 +41,17 @@ public class StringToPolinomio {
             System.out.println(error);
         }
 
+    }
+
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    
+
+    @Override
+    public String toString() {
+        //TODO corregir la forma de impresion
+        return "StringToPolinomio [polinomio=" + Arrays.toString(polinomio) + "]";
     }
 
 }

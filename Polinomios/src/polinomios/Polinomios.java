@@ -23,11 +23,11 @@ public class Polinomios {
         while (true) {
             
 
-            System.out.print("Ingrese los polinomios a operar , para terminar de ingresar escriba * ");
+            System.out.println("Ingrese los polinomios a operar , para terminar de ingresar escriba *"  );
             try {
-                System.out.print("Introduzca su polinomio: ");
+                System.out.println( "Introduzca su polinomio:  ");
                 String polinomioIn = teclado.nextLine();
-                StringToPolinomio newPolinomio = new StringToPolinomio(polinomioIn);
+                StringToPolinomio2 newPolinomio = new StringToPolinomio2(polinomioIn);
                 
                 System.out.println(newPolinomio.toString());
 
