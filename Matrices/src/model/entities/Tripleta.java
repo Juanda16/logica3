@@ -1,10 +1,6 @@
-package util;
-
-//import java.io.*;
-import java.util.Scanner;
+package model.entities;
 
 public class Tripleta {
-
     int row = 0, column = 0;
     Object value;
 
@@ -91,4 +87,6 @@ public class Tripleta {
                                                                        // Tools | Templates.
     }
 
+    
+    
 }
