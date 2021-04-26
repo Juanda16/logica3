@@ -197,6 +197,10 @@ public class MatrizEnTripleta {
         return (int) tripletas[0].getValue();
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getRowSize() {
         return (int) tripletas[0].getRow();
     }

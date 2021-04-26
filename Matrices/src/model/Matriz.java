@@ -14,7 +14,18 @@ public class Matriz {
     /**
      * 
      */
+    
+    public Matriz() {
+        matriz = new MatrizEnTripleta();
+        polinomio = new Polinomio();
+    }
 
+    
+    /** 
+     * @param evalRow
+     * @return Polinomio
+     * @throws IOException
+     */
     public static Polinomio replaceLetter(int evalRow) throws IOException {
         ArrayList<Double> currentRow = new ArrayList<Double>();
         char character = 'A';
@@ -49,4 +60,9 @@ public class Matriz {
     
 
     }
+
+    /**
+     * 
+     */
+    
 }

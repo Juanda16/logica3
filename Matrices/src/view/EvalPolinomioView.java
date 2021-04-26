@@ -1,4 +1,5 @@
 package view;
+
 import controller.EvalPolinomioController;
 
 import java.util.Scanner;
@@ -8,12 +9,11 @@ import view.constants.EvalConstants;
 public class EvalPolinomioView {
     static Scanner read = new Scanner(System.in);
 
-    
-    /** 
+    /**
      * @param size
      * @param polinomios
      */
-    public static void index(String matriz, int size){
+    public static void index(String matriz, int size) {
         int selectedPol = 0;
 
         System.out.println(EvalConstants.TITLE);
@@ -22,39 +22,46 @@ public class EvalPolinomioView {
         System.out.println(matriz);
 
         int select;
+        char selectChar = '-';
+        
         int nEval;
-        try {
-            if (size > 0) {
+        do {
+            try {
+
+                if (size > 0) {
                     System.out.println(EvalConstants.NOTES + size);
                     select = read.nextInt();
-                          
+
                     System.out.println(EvalConstants.NOTES_EVAL);
                     nEval = read.nextInt();
-                    //return nEval;
-                                                     
-                    if (select < 0 || select > size ||select == 0 ) {
-                            System.out.println(EvalConstants.ERROR);
+                    // return nEval;
 
-                        }else {
-                            selectedPol= select;
+                    if (select < 0 || select > size || select == 0) {
+                        System.out.println(EvalConstants.ERROR);
 
-                        }
+                    } else {
+                        selectedPol = select;
+
+                    }
                     EvalPolinomioController.evaluate(selectedPol, nEval);
-                    
-           
-                } else{
+                    System.out.print(EvalConstants.OUT);
+                    selectChar = read.next().charAt(0);
+                    read.nextLine();
 
-                 System.out.println(EvalConstants.ERROR_EMPTY);
+                } else {
+
+                    System.out.println(EvalConstants.ERROR_EMPTY);
                 }
 
-    
-        }catch (Exception e) {
-            System.out.println("Error: Debe ingresar un valor numérico " + e);
-        //return 0;
+            } catch (Exception e) {
+                System.out.println("Error: Debe ingresar un valor numérico " + e);
+                // return 0;
             }
-        
+        } while (selectChar != '.');
+
     }
-      /** 
+
+    /**
      * @param result
      */
     public static void result(double result) {
@@ -71,8 +78,3 @@ public class EvalPolinomioView {
         } while (select != '.');
     }
 }
-
-
-
-    
-  

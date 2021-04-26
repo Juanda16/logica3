@@ -99,7 +99,7 @@ public class Polinomio {
      * @return int
      */
     // retorna el número de coeficientes literales del polinomio
-    //TODO 7. doit
+    
     public  int getSizePolLetter() {
         
         int sizePolLetter = 0;
@@ -146,21 +146,21 @@ public class Polinomio {
      * @param coef
      * @param exp
      */
-    public void insertTermnByInt(int coef, int exp) {
-        // TODO. falta terminarla y definir si si es necesario este método
-        Termino termn = new Termino(coef, exp);
-        Nodo nodo = new Nodo(termn);
-        Nodo cA = this.getCabeza();
-        cA.setLiga(nodo);
-        cA = nodo;
-        // hacer esto para insertar x cantidad de términos
-        // for(){
-        // termn = new Termino(6, 2);
-        // nodo = new Nodo(termn);
-        // cA.setLiga(nodo);
-        // cA=nodo;}
+    // public void insertTermnByInt(int coef, int exp) {
+    //     // TODO. falta terminarla y definir si si es necesario este método
+    //     Termino termn = new Termino(coef, exp);
+    //     Nodo nodo = new Nodo(termn);
+    //     Nodo cA = this.getCabeza();
+    //     cA.setLiga(nodo);
+    //     cA = nodo;
+    //     // hacer esto para insertar x cantidad de términos
+    //     // for(){
+    //     // termn = new Termino(6, 2);
+    //     // nodo = new Nodo(termn);
+    //     // cA.setLiga(nodo);
+    //     // cA=nodo;}
 
-    }
+    // }
 
     public void simplify() {
         Polinomio temp = new Polinomio();

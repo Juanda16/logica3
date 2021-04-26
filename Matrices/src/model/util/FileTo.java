@@ -60,6 +60,11 @@ public class FileTo {
 
     }
 
+    
+    /** 
+     * @param readStrinRow
+     * @return Tripleta[]
+     */
     public static Tripleta[] stringToRow(String readStrinRow) {
         //String tempString = readStrinRow;
         MatrizEnTripleta matrizTemp = new MatrizEnTripleta();

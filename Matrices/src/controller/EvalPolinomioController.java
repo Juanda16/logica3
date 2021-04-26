@@ -14,6 +14,12 @@ public class EvalPolinomioController {
 
     }
 
+    
+    /** 
+     * @param row
+     * @param t
+     * @throws IOException
+     */
     public static void evaluate(int row, int t) throws IOException {
         // Replace.replaceLetter();
         Polinomio temPolinomio = new Polinomio();
@@ -21,8 +27,8 @@ public class EvalPolinomioController {
             temPolinomio = Matriz.replaceLetter(row);
         }
         double result = Evaluation.evalPol(temPolinomio, t);
+
         EvalPolinomioView.result(result);
-
+        System.out.println((Matriz.polinomio.toString()));
     }
-
 }

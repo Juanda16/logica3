@@ -14,6 +14,11 @@ import model.entities.Termino;
 
 public class StringToPolinomio {
 
+    
+    /** 
+     * @param rawPolinomio
+     * @return Polinomio
+     */
     public static Polinomio stringToPolinomio(String rawPolinomio) {
         Polinomio polinomio = new Polinomio();
         try {
