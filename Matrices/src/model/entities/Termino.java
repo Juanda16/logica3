@@ -38,25 +38,5 @@ public class Termino {
     }  
     
     
-    /** 
-     * @param a
-     * @param b
-     * @return Termino
-     */
-    public static Termino dividirTermino(Termino a, Termino b) {
-        double coeficiente = a.getCoef() / b.getCoef();
-        int exponente = a.getExp() - b.getExp();
-        return new Termino(coeficiente, exponente);
-    }
-    
-    /** 
-     * @return String
-     */
-    @Override
-    public String toString() {
-        StringBuilder polinomio = new StringBuilder();
-        polinomio.append(coef).append("X^").append(exp).append(" ");
-        return polinomio.toString();
-    }
-    
+
 }

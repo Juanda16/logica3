@@ -5,6 +5,7 @@ package model.entities;
 public class Polinomio {
 
     private Nodo cabeza;
+    private String stringRepresentation ;
 
     /**
      * @param cabeza
@@ -17,6 +18,20 @@ public class Polinomio {
 
         cabeza = new Nodo(null);
         cabeza.setLiga(null);
+    }
+
+    /**
+     * @return the stringRepresentation
+     */
+    public String getStringRepresentation() {
+        return stringRepresentation;
+    }
+
+    /**
+     * @param stringRepresentation the stringRepresentation to set
+     */
+    public void setStringRepresentation(String stringRepresentation) {
+        this.stringRepresentation = stringRepresentation;
     }
 
     /**
@@ -106,15 +121,13 @@ public class Polinomio {
      * @param coef
      * @param exp
      */
-    public void TermnToPol(Double coef, int exp) {
+    public void insertTermnByInt(int coef, int exp) {
         // TODO. falta terminarla y definir si si es necesario este método
-        Termino termino1 = new Termino(coef, exp);
-        Nodo nodo = new Nodo(termino1);
+        Termino termn = new Termino(coef, exp);
+        Nodo nodo = new Nodo(termn);
         Nodo cA = this.getCabeza();
         cA.setLiga(nodo);
         cA = nodo;
-
-
         // hacer esto para insertar x cantidad de términos
         // for(){
         // termn = new Termino(6, 2);
@@ -181,7 +194,7 @@ public class Polinomio {
      * @param index
      * @return Termino
      */
-    public Termino getTermnN(int index) {
+    Termino getTermnN(int index) {
         if (index <= this.getSize()) {
             Nodo nodoRecord = this.getCabeza().getLiga();
 
@@ -219,4 +232,3 @@ public class Polinomio {
     }
 
 }
-

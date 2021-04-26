@@ -56,5 +56,6 @@ public class Polinomios {
     int getSize(){
         return polinomios.size();
     }
+
     
 }

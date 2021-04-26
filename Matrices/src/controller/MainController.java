@@ -1,5 +1,7 @@
 package controller;
 
+import view.constants.NewMatriz;
+
 //import view.constants;
 
 public class MainController {
@@ -15,11 +17,11 @@ public class MainController {
             break;
         case '2':ShowPolinomioController.index();
             break;
-        case '3':MultiplyPolinomioController.index();
+        case '3':NewMatrizController.index();
             break;
-        case '4':DividePolinomioController.index();
+        case '4':ShowMatrizController.index();
             break;
-        case '5':EvalPolinomioController.index();
+        case '5':EvalPoliniomioController.index();
             break;
         case '.':
             break;
