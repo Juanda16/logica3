@@ -14,7 +14,7 @@ public class NewPolinomioView {
        
         System.out.println(NewPolinomioConstants.TITLE);        
                
-        char response;
+        //char response;
         do {
             System.out.println(NewPolinomioConstants.SUBTITLE);
             System.out.println(NewPolinomioConstants.NOTES);

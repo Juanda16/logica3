@@ -1,7 +1,7 @@
 package view.constants;
 
-import model.entities.Polinomio;
-import model.*;
+//import model.entities.Polinomio;
+//import model.*;
 
 public class NewMatrizConstants {
     public static final String TITLE = "\n" + "[!] Interfaz de ingreso de la matriz ";

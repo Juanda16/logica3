@@ -1,10 +1,10 @@
 package controller;
 
 import model.Matriz;
-import model.Polinomios;
+//import model.Polinomios;
 import view.NewMatrizView;
 import model.util.FileTo;
-import model.util.StringToPolinomio;
+//import model.util.StringToPolinomio;
 import model.entities.*;
 
 public class NewMatrizController {

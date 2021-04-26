@@ -1,6 +1,6 @@
 package model.util;
 
-import model.entities.Tripleta;
+//import model.entities.Tripleta;
 
 class StringToTripleta {
      

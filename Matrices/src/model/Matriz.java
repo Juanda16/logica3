@@ -46,6 +46,7 @@ public class Matriz {
         System.out.println(StringToPolinomio.stringToPolinomio(rawPolinomio).toString());
         polinomio = StringToPolinomio.stringToPolinomio(rawPolinomio);
         return polinomio;
+    
 
     }
 }

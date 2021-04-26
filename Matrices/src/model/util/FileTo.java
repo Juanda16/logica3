@@ -1,6 +1,6 @@
 package model.util;
 
-import model.Matriz;
+//import model.Matriz;
 import model.entities.MatrizEnTripleta;
 import model.entities.Tripleta;
 
@@ -61,7 +61,7 @@ public class FileTo {
     }
 
     public static Tripleta[] stringToRow(String readStrinRow) {
-        String tempString = readStrinRow;
+        //String tempString = readStrinRow;
         MatrizEnTripleta matrizTemp = new MatrizEnTripleta();
         int columnCounter = 0;
         int rowCounter = 0;

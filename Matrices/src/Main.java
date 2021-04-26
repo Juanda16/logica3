@@ -1,8 +1,8 @@
 import java.io.IOException;
 
-import controller.EvalPolinomioController;
-import model.entities.MatrizEnTripleta;
-import model.util.FileTo;
+// import controller.EvalPolinomioController;
+// import model.entities.MatrizEnTripleta;
+// import model.util.FileTo;
 import view.Index;
 
 public class Main {

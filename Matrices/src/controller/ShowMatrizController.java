@@ -1,7 +1,7 @@
 package controller;
 
 import model.Matriz;
-import model.entities.MatrizEnTripleta;
+//import model.entities.MatrizEnTripleta;
 import view.ShowMatrizView;
 
 public class ShowMatrizController {

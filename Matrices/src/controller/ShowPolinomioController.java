@@ -1,6 +1,6 @@
 package controller;
 import model.Matriz;
-import model.Polinomios;
+//import model.Polinomios;
 
 import view.ShowPolinomioView;
 

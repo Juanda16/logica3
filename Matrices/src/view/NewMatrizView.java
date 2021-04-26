@@ -2,11 +2,11 @@ package view;
 
 import java.util.Scanner;
 
-import controller.MainController;
+//import controller.MainController;
 import controller.NewMatrizController;
 import model.Matriz;
-import model.Polinomios;
-import model.entities.Polinomio;
+//import model.Polinomios;
+//import model.entities.Polinomio;
 import view.constants.NewMatrizConstants;
 
 public class NewMatrizView {
