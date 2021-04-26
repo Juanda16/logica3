@@ -1,5 +1,7 @@
 package model.entities;
 
+import java.util.Scanner;
+
 public class Tripleta {
     int row = 0, column = 0;
     Object value;

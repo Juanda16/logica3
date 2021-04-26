@@ -1,5 +1,6 @@
 package model.util;
 
+import model.Matriz;
 import model.entities.MatrizEnTripleta;
 import java.io.*;
 
@@ -15,7 +16,7 @@ public class FileTo {
      * @throws IOException
      */
     public static MatrizEnTripleta matrizTripleta(String filePath) throws IOException {
-
+ 
         BufferedReader br = null;
 
         try {
@@ -24,6 +25,7 @@ public class FileTo {
             MatrizEnTripleta matriz = new MatrizEnTripleta();
             br = new BufferedReader(new FileReader(filePath));
             String line = br.readLine();
+            
              
             
 
@@ -60,6 +62,44 @@ public class FileTo {
 
     }
 
+    
+
+    public static MatrizEnTripleta stringToRow(String readStrinRow){
+        String tempString = readStrinRow;
+        MatrizEnTripleta matrizTemp = new MatrizEnTripleta();
+        int columnCounter = 0;
+        int rowCounter = 0;
+
+        try {
+            
+            String[] lines = readStrinRow.split("\\r?\\n");
+            for (int i = 0; i < lines.length; i++) {
+                lines[i] = lines[i].replaceAll(" ", "");
+                String[] rowParts = lines[i].split(SEPARATOR); 
+            
+                for (String field : rowParts) {
+
+                    try {
+                        double value = Double.parseDouble(field);
+                        matrizTemp.setElement(rowCounter, columnCounter, value);
+                    } catch (Exception error) {
+                        System.out.println(error);
+
+                    }
+                    columnCounter++;
+                }
+                rowCounter++;
+                columnCounter = 0;
+            }
+           rowCounter = 0; 
+           return matrizTemp;
+            
+        } catch (Exception e) {
+        System.out.println(e);
+        return null;
+      
+        }
+    }
     // private static String[] removeTrailingQuotes(String[] fields) {
 
     // String result[] = new String[fields.length];

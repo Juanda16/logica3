@@ -1,5 +1,6 @@
 package controller;
 
+import model.Matriz;
 import model.Polinomios;
 import view.NewPolinomioView;
 import model.util.StringToPolinomio;
@@ -19,9 +20,9 @@ public class NewPolinomioController {
     public static void store(String rawPolinomio) {
 
         // Polinomios.polinomios.add(StringToPolinomio.StringToPolinomio(rawPolinomio));
-
-        Polinomio polinomio = new Polinomio();
-        polinomio.setStringRepresentation(rawPolinomio);
+        Matriz matriz = new Matriz(); 
+        
+        Matriz.polinomio.setStringRepresentation(rawPolinomio);
         //Insert 10 pol test 
         /* for (int i = 0; i < 10; i++) {
             Polinomio pA = new Polinomio();
@@ -45,6 +46,6 @@ public class NewPolinomioController {
 
         } */
 
-    }
+   }
 
 }

@@ -94,6 +94,31 @@ public class Polinomio {
         return size;
     }
 
+
+    /** 
+     * @return int
+     */
+    // retorna el número de coeficientes literales del polinomio
+    //TODO 7. doit
+    public  int getSizePolLetter() {
+        
+        int sizePolLetter = 0;
+        String tempString = this.stringRepresentation;
+        try {
+            tempString = tempString.replaceAll(" ", "");
+            String parts[] = this.stringRepresentation.split("(?=\\+)|(?=-)"); 
+            sizePolLetter = parts.length;
+
+            return sizePolLetter;
+
+        }catch (Exception error) {
+        System.out.println(error);
+        return 0;
+        }
+        
+    }
+
+
     
     /** 
      * @param liga

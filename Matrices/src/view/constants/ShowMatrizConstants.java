@@ -1,9 +1,9 @@
 package view.constants;
 
-public class ShowPolinomioConstants {
+public class ShowMatrizConstants {
 
     public static final String TITLE =
-    "\n" + "[!] Interfaz de lista de polinomios ";
+    "\n" + "[!] Interfaz de matrices ";
     public static final String SUBTITLE = 
     "[*]  ";
      
@@ -11,10 +11,11 @@ public class ShowPolinomioConstants {
     public static final String[] OPTIONS ={
 
            "[~] Seleccione alguna opcion!",          
-           "[0] - Mostrar el polinomio.",
+           "[0] - Mostrar lamatriz.",
            "[.] - Inicio."} ;
            
     public static final String OUT = "[.] Presione \".\" para salir ";
-    public static final String RESULT = "[*] POLINOMIO:";
+    public static final String RESULT = "[*] MATRIZ:";
     
 }
+

@@ -1,4 +1,5 @@
 package controller;
+import model.Matriz;
 import model.Polinomios;
 
 import view.ShowPolinomioView;
@@ -16,16 +17,15 @@ public class ShowPolinomioController {
      * @param select
      */
     public static void options(char select) {
+
         switch (select) {
         case '0':
-            ShowPolinomioView.printPolinomios(Polinomios.polinomios.toString());
+            ShowPolinomioView.printPolinomios(Matriz.polinomio.getStringRepresentation());
             
             break;
         case '.':
             break;
         default:
-            int id = Character.getNumericValue(select);
-            ShowPolinomioView.printPolinomios(Polinomios.polinomios.get(id).toString());
             break;
         }
     }

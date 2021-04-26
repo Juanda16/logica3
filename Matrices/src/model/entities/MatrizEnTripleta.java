@@ -201,8 +201,9 @@ public class MatrizEnTripleta {
 
         int posicionArreglo = 1;
 
-        // Recorrido por una matriz virtual m x n
-        for (int filasVirtuales = 0; filasVirtuales < cantidadFilasMatriz; filasVirtuales++) {
+        // TODO revisar <= en línea 205, con < sólo imprime una linea
+        //Recorrido por una matriz virtual m x n
+        for (int filasVirtuales = 0; filasVirtuales <= cantidadFilasMatriz; filasVirtuales++) {
             for (int columnasVirtuales = 0; columnasVirtuales < cantidadColumnasMatriz; columnasVirtuales++) {
                 if (posicionArreglo <= valoresDiferentesCero) {
                     // Estoy en una posicion valida en el arreglo
