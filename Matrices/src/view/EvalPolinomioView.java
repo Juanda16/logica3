@@ -13,13 +13,13 @@ public class EvalPolinomioView {
      * @param size
      * @param polinomios
      */
-    public static void index(String polinomios, int size){
+    public static void index(String matriz, int size){
         int selectedPol = 0;
 
         System.out.println(EvalConstants.TITLE);
         System.out.println(EvalConstants.SUBTITLE);
         System.out.println("\n");
-        System.out.println(polinomios);
+        System.out.println(matriz);
 
         int select;
         int nEval;

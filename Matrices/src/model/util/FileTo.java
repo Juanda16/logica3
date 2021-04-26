@@ -2,6 +2,8 @@ package model.util;
 
 import model.Matriz;
 import model.entities.MatrizEnTripleta;
+import model.entities.Tripleta;
+
 import java.io.*;
 
 public class FileTo {
@@ -9,14 +11,13 @@ public class FileTo {
     public static final String SEPARATOR = ";";
     public static final String QUOTE = "\"";
 
-    
-    /** 
+    /**
      * @param filePath
      * @return MatrizEnTripleta
      * @throws IOException
      */
     public static MatrizEnTripleta matrizTripleta(String filePath) throws IOException {
- 
+
         BufferedReader br = null;
 
         try {
@@ -25,9 +26,6 @@ public class FileTo {
             MatrizEnTripleta matriz = new MatrizEnTripleta();
             br = new BufferedReader(new FileReader(filePath));
             String line = br.readLine();
-            
-             
-            
 
             while (null != line) {
 
@@ -62,21 +60,19 @@ public class FileTo {
 
     }
 
-    
-
-    public static MatrizEnTripleta stringToRow(String readStrinRow){
+    public static Tripleta[] stringToRow(String readStrinRow) {
         String tempString = readStrinRow;
         MatrizEnTripleta matrizTemp = new MatrizEnTripleta();
         int columnCounter = 0;
         int rowCounter = 0;
 
         try {
-            
+
             String[] lines = readStrinRow.split("\\r?\\n");
             for (int i = 0; i < lines.length; i++) {
                 lines[i] = lines[i].replaceAll(" ", "");
-                String[] rowParts = lines[i].split(SEPARATOR); 
-            
+                String[] rowParts = lines[i].split(SEPARATOR);
+
                 for (String field : rowParts) {
 
                     try {
@@ -91,13 +87,13 @@ public class FileTo {
                 rowCounter++;
                 columnCounter = 0;
             }
-           rowCounter = 0; 
-           return matrizTemp;
-            
+            rowCounter = 0;
+            return matrizTemp.getTripletas();
+
         } catch (Exception e) {
-        System.out.println(e);
-        return null;
-      
+            System.out.println(e);
+            return null;
+
         }
     }
     // private static String[] removeTrailingQuotes(String[] fields) {

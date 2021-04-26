@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import controller.MainController;
 import controller.NewMatrizController;
-import jdk.incubator.jpackage.main.Main;
 import model.Matriz;
 import model.Polinomios;
 import model.entities.Polinomio;
@@ -29,7 +28,7 @@ public class NewMatrizView {
             System.out.println(NewMatrizConstants.SUBTITLE + Matriz.polinomio.getSizePolLetter());
             System.out.println(NewMatrizConstants.NOTES);
             readStringRow = readStringRow + read.nextLine() + "\n";            
-            System.out.println("Fila: "+ readStringRow +" guardada");
+            System.out.println("Fila: "+ readStringRow +" ");
             do {
                 System.out.print(NewMatrizConstants.QUESTION);
                 response = read.next().charAt(0);

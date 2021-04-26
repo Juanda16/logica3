@@ -26,6 +26,13 @@ public class MatrizEnTripleta {
     }
 
     
+    /**
+     * @param tripletas
+     */
+    public MatrizEnTripleta(Tripleta[] tripletas) {
+        this.tripletas = tripletas;
+    }
+
     /** 
      * @param row
      * @param column
@@ -40,11 +47,15 @@ public class MatrizEnTripleta {
         int possition = elements + 1;
         boolean done = false;
 
-        if (rows < row || columns < column) {
-            tripletaConfig.setColumn(column + 1);
+        if (rows < row ) {
             tripletaConfig.setRow(row + 1);
             //System.out.println("possition out of range");
         }
+
+        if (columns < column) {
+            tripletaConfig.setColumn(column + 1);
+        }
+
         if (elements > 0) {
             for (int i = 1; i <= elements; i++) {
 
@@ -185,6 +196,11 @@ public class MatrizEnTripleta {
     public int getCantidadValores() {
         return (int) tripletas[0].getValue();
     }
+
+    public int getRowSize() {
+        return (int) tripletas[0].getRow();
+    }
+
 
     
     /** 

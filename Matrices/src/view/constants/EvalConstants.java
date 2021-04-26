@@ -3,7 +3,7 @@ package view.constants;
 public class EvalConstants {
     public static final String TITLE = "\n" + "[!] Interfaz de evaluación de matrices ";
     public static final String SUBTITLE = 
-    "[*] Escoja 1 polinomio de la lista. \n ingrese \"0\" para salir sin hacer la operación ";
+    "[*] Escoja 1 fila de la lista. \n ingrese \"0\" para salir sin hacer la operación ";
 
     public static final String NOTES = "[*] Ingrese un número entre 1 y ";
     public static final String NOTES_EVAL = 

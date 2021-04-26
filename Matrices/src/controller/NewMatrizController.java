@@ -20,8 +20,10 @@ public class NewMatrizController {
 
     public static void store(String readStringRow) {
 
-           
-      Matriz.matriz = FileTo.stringToRow(readStringRow);
+        MatrizEnTripleta tempMatriz = new MatrizEnTripleta(FileTo.stringToRow(readStringRow));
+        System.out.println(tempMatriz.toString());
+        Matriz.matriz = tempMatriz;
+      
       System.out.println(Matriz.matriz.toString());
       
          
