@@ -21,7 +21,7 @@ public class MainController {
             break;
         case '4':ShowMatrizController.index();
             break;
-        case '5':EvalPoliniomioController.index();
+        case '5':EvalPolinomioController.index();
             break;
         case '.':
             break;

@@ -9,13 +9,13 @@ import model.entities.Polinomio;
 import model.operations.Replace;
 import model.util.FileTo;
 import model.util.StringToPolinomio;
-import view.EvalPoliniomioView;
+import view.EvalPolinomioView;
 import model.Matriz;
 
-public class EvalPoliniomioController {
+public class EvalPolinomioController {
 
     public static void index() {
-        EvalPoliniomioView.index();
+        EvalPolinomioView.index();
 
 
     }
