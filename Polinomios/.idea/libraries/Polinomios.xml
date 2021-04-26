@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Polinomios">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Polinomios.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
