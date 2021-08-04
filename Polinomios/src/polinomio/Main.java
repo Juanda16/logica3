@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-=======
-import model.entities.*;
-import model.operations.*;
 import java.util.Scanner;
 import model.util.StringToPolinomio;
->>>>>>> f218a517f382bd77c86b9258f04c6c4158c3aece
 import view.Index;
-
 
 public class Main {
 
@@ -18,10 +12,6 @@ public class Main {
     public static void main(String[] args) throws Exception {
         
         Index.mainScreen();
-<<<<<<< HEAD
-
-    }
-=======
     }
 }
         
@@ -32,6 +22,4 @@ public class Main {
     
 
     
->>>>>>> f218a517f382bd77c86b9258f04c6c4158c3aece
 
-}

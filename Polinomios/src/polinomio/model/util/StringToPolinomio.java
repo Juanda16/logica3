@@ -20,8 +20,6 @@ insertTermnByInt(Double coef, int exp)  ok
 
 public class StringToPolinomio{
    
-
-    
     /** 
      * @param rawPolinomio
      * @return Polinomio
@@ -79,7 +77,5 @@ public class StringToPolinomio{
      * @see java.lang.Object#toString()
      */
     
- 
-
         
     }
