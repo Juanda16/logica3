@@ -1,11 +1,33 @@
-import static matriz.util.Matriz.MATRIZTEXTO;
-// import util.Matriz;
-import matriz.util.Tripleta;
-import model.entities.NodoDoble;
+/*
+ * Copyright 2019 Carlos Alejandro Escobar Marulanda ealejandro101@gmail.com
+ * Permission is hereby granted, free of charge, to any person 
+ * obtaining a copy of this software and associated documentation 
+ * files (the "Software"), to deal in the Software without 
+ * restriction, including without limitation the rights to use, 
+ * copy, modify, merge, publish, distribute, sublicense, and/or 
+ * sell copies of the Software, and to permit persons to whom the 
+ * Software is furnished to do so, subject to the following 
+ * conditions:
+ * The above copyright notice and this permission notice shall 
+ * be included in all copies or substantial portions of the 
+ * Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ *  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR 
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+package matriz.listaligadaforma2;
 
+import static matriz.util.Matriz.MATRIZTEXTO;
+import matriz.util.NodoDoble;
+import matriz.util.Tripleta;
 
 public class MatrizEnListaLigadaForma2 {
-    
+
     NodoDoble nodoConfiguracion; // en el libro se llama mat
 
     /**
@@ -17,13 +39,6 @@ public class MatrizEnListaLigadaForma2 {
     public MatrizEnListaLigadaForma2(int numeroFilas, int numeroColumnas) {
         construirNodosCabeza(numeroFilas, numeroColumnas);
     }
-
-    
-
-    public MatrizEnListaLigadaForma2() {
-    }
-
-
 
     /**
      * Métdo que construye el nodo configuración y nodo cabeza
@@ -50,12 +65,24 @@ public class MatrizEnListaLigadaForma2 {
      * Método para ingresar los datos de un nuevo registro e insertarlos en la
      * matriz
      *
-     * @param fila fila donde se encuentra el dato
-     * @param columna columnas donde se encuentra el dato
+     * @param filaDestino fila donde se encuentra el dato
+     * @param columnaDestino columnas donde se encuentra el dato
      * @param valor valor
      */
-    public void setCelda(int fila, int columna, double valor) {
-        Tripleta nuevoTripletaRegistro = new Tripleta(fila, columna, valor);
+    public void setCelda(int filaDestino, int columnaDestino, double valor) throws Exception {
+        Tripleta configuracion = nodoConfiguracion.getT();
+
+        /**
+         * Valido limites
+         */
+        int filas = configuracion.getF();
+        int columnas = configuracion.getC();
+
+        if (filaDestino <= 0 || filas < filaDestino || columnaDestino <= 0 || columnas < columnaDestino) {
+            throw new Exception("Esta fuera de los limites de la matriz");
+        }
+        
+        Tripleta nuevoTripletaRegistro = new Tripleta(filaDestino, columnaDestino, valor);
         setCelda(nuevoTripletaRegistro);
     }
 
@@ -69,10 +96,45 @@ public class MatrizEnListaLigadaForma2 {
         NodoDoble nuevoNodo = new NodoDoble(t);
         conectarFilas(nuevoNodo);
         conectarColumnas(nuevoNodo);
-        int c = (Integer) nodoConfiguracion.getT().getValue();
-        nodoConfiguracion.getT().setValue(c++);
+        int c = (Integer) nodoConfiguracion.getT().getV();
+        nodoConfiguracion.getT().setV(c++);
+    }
+    
+    public double getCelda(int fila, int columna){
+        double valor = 0;
+        NodoDoble nodoCabeza = nodoConfiguracion.getLigaF();
+        NodoDoble nodoRecorrido = nodoCabeza.getLigaF();
+        while(nodoRecorrido != null && nodoRecorrido != nodoCabeza){
+            Tripleta tripletaRecorrido = nodoRecorrido.getT();
+            int f = tripletaRecorrido.getF();
+            
+            if(fila > f){
+                nodoRecorrido = nodoRecorrido.getLigaF();
+            } else if( fila == f){
+                // ya estoy en la fila
+                int c = tripletaRecorrido.getC();
+                if( columna > c){
+                    nodoRecorrido = nodoRecorrido.getLigaF();
+                } else if( columna == c){
+                    valor = (Double) tripletaRecorrido.getV();
+                    return valor;
+                } else {
+                    return valor;
+                }
+            } else {
+                return valor;
+            }
+        }
+        return valor;
     }
 
+    public void aumentarMatriz( int n){
+        int f = nodoConfiguracion.getT().getF();
+        int c = nodoConfiguracion.getT().getC();
+        nodoConfiguracion.getT().setF( f + n );
+        nodoConfiguracion.getT().setC( c + n );
+    }
+    
     /**
      * Método que ingresa un nodo recorriendo la lista de las filas
      *
@@ -80,8 +142,8 @@ public class MatrizEnListaLigadaForma2 {
      */
     private void conectarFilas(NodoDoble nuevoNodo) {
         // datos para la comparación
-        int filaNuevoNodo = nuevoNodo.getT().getRow();
-        int columnaNuevoNodo = nuevoNodo.getT().getColumn();
+        int filaNuevoNodo = nuevoNodo.getT().getF();
+        int columnaNuevoNodo = nuevoNodo.getT().getC();
 
         // nodos para el recorrido
         NodoDoble cabeza = this.getCabeza();
@@ -92,7 +154,7 @@ public class MatrizEnListaLigadaForma2 {
 
         // Permite posicionar el nodoRecorrido en la fila correcta para ingresar 
         while (nodoRecorrido != null && nodoRecorrido != cabeza) {
-            if (nodoRecorrido.getT().getRow() < filaNuevoNodo) {
+            if (nodoRecorrido.getT().getF() < filaNuevoNodo) {
                 ultimo = nodoRecorrido;
                 nodoRecorrido = nodoRecorrido.getLigaF();
             } else {
@@ -101,13 +163,13 @@ public class MatrizEnListaLigadaForma2 {
         }
 
         while (nodoRecorrido != null && nodoRecorrido != cabeza) {
-            if (nodoRecorrido.getT().getRow() == filaNuevoNodo) {
-                if (nodoRecorrido.getT().getColumn() < columnaNuevoNodo) {
+            if (nodoRecorrido.getT().getF() == filaNuevoNodo) {
+                if (nodoRecorrido.getT().getC() < columnaNuevoNodo) {
                     ultimo = nodoRecorrido;
                     nodoRecorrido = nodoRecorrido.getLigaF();
-                } else if (nodoRecorrido.getT().getColumn() == columnaNuevoNodo) {
+                } else if (nodoRecorrido.getT().getC() == columnaNuevoNodo) {
                     siDebeInsertar = false;
-                    nodoRecorrido.getT().setValue(nuevoNodo.getT().getValue());
+                    nodoRecorrido.getT().setV(nuevoNodo.getT().getV());
                     break;
                 } else {
                     break;
@@ -129,8 +191,8 @@ public class MatrizEnListaLigadaForma2 {
      */
     private void conectarColumnas(NodoDoble nuevoNodo) {
         // datos para la comparación
-        int filaNuevoNodo = nuevoNodo.getT().getRow();
-        int columnaNuevoNodo = nuevoNodo.getT().getColumn();
+        int filaNuevoNodo = nuevoNodo.getT().getF();
+        int columnaNuevoNodo = nuevoNodo.getT().getC();
 
         // nodos para el recorrido
         NodoDoble cabeza = getCabeza();
@@ -140,7 +202,7 @@ public class MatrizEnListaLigadaForma2 {
         boolean siDebeInsertar = true;
 
         while (nodoRecorrido != null && nodoRecorrido != cabeza) {
-            if (nodoRecorrido.getT().getColumn() < columnaNuevoNodo) {
+            if (nodoRecorrido.getT().getC() < columnaNuevoNodo) {
                 ultimo = nodoRecorrido;
                 nodoRecorrido = nodoRecorrido.getLigaC();
             } else {
@@ -149,13 +211,13 @@ public class MatrizEnListaLigadaForma2 {
         }
 
         while (nodoRecorrido != null && nodoRecorrido != cabeza) {
-            if (nodoRecorrido.getT().getColumn() == columnaNuevoNodo) {
-                if (nodoRecorrido.getT().getRow() < filaNuevoNodo) {
+            if (nodoRecorrido.getT().getC() == columnaNuevoNodo) {
+                if (nodoRecorrido.getT().getF() < filaNuevoNodo) {
                     ultimo = nodoRecorrido;
                     nodoRecorrido = nodoRecorrido.getLigaC();
-                } else if (nodoRecorrido.getT().getRow() == filaNuevoNodo) {
+                } else if (nodoRecorrido.getT().getF() == filaNuevoNodo) {
                     siDebeInsertar = false;
-                    nodoRecorrido.getT().setValue(nuevoNodo.getT().getValue());
+                    nodoRecorrido.getT().setV(nuevoNodo.getT().getV());
                     break;
                 } else {
                     break;
@@ -171,18 +233,10 @@ public class MatrizEnListaLigadaForma2 {
         }
     }
 
-    
-    /** 
-     * @return NodoDoble
-     */
     private NodoDoble getCabeza() {
         return nodoConfiguracion.getLigaC();
     }
 
-    
-    /** 
-     * @return MatrizEnListaLigadaForma2
-     */
     public static MatrizEnListaLigadaForma2 entregarMatrizRelacion() {
 
         String[] filas = MATRIZTEXTO.split("\n");
@@ -215,17 +269,13 @@ public class MatrizEnListaLigadaForma2 {
         return matrizEnListaLigadaForma2;
     }
 
-    
-    /** 
-     * @return String
-     */
     @Override
     public String toString() {
         StringBuilder cadena = new StringBuilder();
         // Obtengo la configuración de la matriz, fr y cr y la cantidadValores
         Tripleta configuracion = nodoConfiguracion.getT();
-        int fr = configuracion.getRow();
-        int cr = configuracion.getColumn();
+        int fr = configuracion.getF();
+        int cr = configuracion.getC();
         // Imprimir una línea con encabezado de las columnas
         cadena.append("\t");
         for (int i = 1; i <= cr; i++) {
@@ -241,13 +291,13 @@ public class MatrizEnListaLigadaForma2 {
             for (int cv = 1; cv <= cr; cv++) {
                 if (nodoRecorrido != null && nodoRecorrido != nodoCabeza) {
                     Tripleta triMo = nodoRecorrido.getT();
-                    int ft = triMo.getRow();
-                    int ct = triMo.getColumn();
+                    int ft = triMo.getF();
+                    int ct = triMo.getC();
                     if (fv == ft) {
                         if (cv < ct) {
                             cadena.append("0\t");
                         } else if (cv == ct) {
-                            Object vt = triMo.getValue();
+                            Object vt = triMo.getV();
                             if (vt != null) {
                                 cadena.append(vt + "\t");
                             } else {
@@ -269,18 +319,4 @@ public class MatrizEnListaLigadaForma2 {
         return cadena.toString();
     }
 
-    public boolean isSquare() {
-        return false;
-    }
-
-    public double getCelda(int column, int row) {
-        return 0;
-    }
-
-    public int getSize() {
-        return Math.max(nodoConfiguracion.getTripleta().getColumn(),
-        nodoConfiguracion.getTripleta().getColumn());
-        
-    }
-    }
 }

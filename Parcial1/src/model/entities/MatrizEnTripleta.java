@@ -108,7 +108,7 @@ public class MatrizEnTripleta {
         ArrayList<Double> rowN = new ArrayList<Double>();
 
         for (int i = 1; i < columns; i++) {
-            rowN.add(getValue(columns, i));            
+            rowN.add(getValue(columns, i));
         }
         return rowN;
     }
@@ -121,26 +121,26 @@ public class MatrizEnTripleta {
 
         ArrayList<Double> columnN = new ArrayList<Double>();
         for (int i = 1; i < rows; i++) {
-            columnN.add(getValue(i, rows));            
+            columnN.add(getValue(i, rows));
         }
         return columnN;
     }
 
     // /**
-    //  * @param column
-    //  * @return ArrayList<Double>
-    //  */
+    // * @param column
+    // * @return ArrayList<Double>
+    // */
     // public ArrayList<Double> getColumn(int column,) {
 
-    //     ArrayList<Double> columnN = new ArrayList<Double>();
-    //     for (int i = 1; i < tripletas.length; i++) {
-    //         if (tripletas[i].getColumn() == column) {
-    //             columnN.add(tripletas[i].getValue());
-    //         }
-    //     }
-    //     return columnN;
+    // ArrayList<Double> columnN = new ArrayList<Double>();
+    // for (int i = 1; i < tripletas.length; i++) {
+    // if (tripletas[i].getColumn() == column) {
+    // columnN.add(tripletas[i].getValue());
     // }
-    /** 
+    // }
+    // return columnN;
+    // }
+    /**
      * @param column
      * @param row
      * @return ArrayList<Double>
@@ -158,6 +158,29 @@ public class MatrizEnTripleta {
         return value;
     }
 
+    public int getCelda(int column, int row) {
+        int value = 0;
+
+        for (int i = 1; i < tripletas.length; i++) {
+            if (tripletas[i].getRow() == row) {
+                if (tripletas[i].getColumn() == column) {
+                    value = (int) tripletas[i].getValue();
+                }
+            }
+        }
+        return value;
+    }
+
+    public int getSize() {
+        int maxRow = tripletas[0].getRow();
+        int maxColumn = tripletas[0].getColumn();
+
+        return Math.max(maxRow, maxColumn);
+    }
+
+    public boolean isSquare(){
+        return tripletas[0].getRow()==tripletas[0].getColumn();
+    }
     /**
      * @param list
      * @param startIndex
@@ -202,12 +225,12 @@ public class MatrizEnTripleta {
         // 4 = Up ↑
         int maxRow = tripletas[0].getRow();
         int maxColumn = tripletas[0].getColumn();
-        int requestContrast = (int) getValue(column, row);;
+        int requestContrast = (int) getValue(column, row);
         ArrayList<Double> columnList = new ArrayList<Double>();
         ArrayList<Double> rowList = new ArrayList<Double>();
-                               // o -→  ←- ↓  ↑
+        // o -→ ←- ↓ ↑
         int[][] coordinates = { { 0, 0, 0, 0, 0 }, // x
-                                { 0, 0, 0, 0, 0 } };// y
+                { 0, 0, 0, 0, 0 } };// y
 
         try {
             if (row <= maxRow && column <= maxColumn) {
